@@ -7,9 +7,11 @@ pipeline {
       }
     }
     stage('SonarQube Analysis') {
-      def mvn = tool 'Default Maven';
-      withSonarQubeEnv() {
-        sh "${mvn}/bin/mvn verify sonar:sonar -Dsonar.projectKey=assignment1-sonarqube"
+      steps {
+        def mvn = tool 'Default Maven';
+        withSonarQubeEnv() {
+          sh "${mvn}/bin/mvn verify sonar:sonar -Dsonar.projectKey=assignment1-sonarqube"
+        }
       }
     }
   }
