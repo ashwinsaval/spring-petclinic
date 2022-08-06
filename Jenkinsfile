@@ -1,16 +1,9 @@
 pipeline {
   agent any
   stages {
-    // stage('Build') {
-    //   steps {
-    //     sh './mvnw clean package'
-    //   }
-    // }
-    stage('SonarQube Analysis') {
+    stage('Build') {
       steps {
-        withSonarQubeEnv(installationName: 'SonarQube-Assignment1') {
-          sh "./mvnw clean verify sonar:sonar"
-        }
+        sh './mvnw clean verify'
       }
     }
   }
