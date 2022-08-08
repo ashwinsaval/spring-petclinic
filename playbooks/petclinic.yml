@@ -10,6 +10,7 @@
 
   - name: Deployment | kill running java apps 
     shell: "pkill java"
+    ignore_errors: yes
 
   - name: Deployment | copy 
     copy:
