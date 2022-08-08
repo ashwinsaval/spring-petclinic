@@ -1,2 +1,2 @@
-[all:vars]
-ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+[hosts]
+deployment-assignment2 ansible_connection=ssh ansible_ssh_user=ansible_system ansible_ssh_pass=ansible_system

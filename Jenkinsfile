@@ -13,7 +13,7 @@ pipeline {
           ansible-playbook --version
           ansible-galaxy --version
         '''
-        sh 'ansible-playbook -i inventory/mariadb.hosts --private-key=$ANSIBLE_PRIVATE_KEY playbooks/mariadb.yml'
+        sh 'ansible-playbook -i inventory/petclinic.hosts playbooks/petclinic.yml'
       }
     }
   }

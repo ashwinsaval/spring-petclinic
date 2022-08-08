@@ -1,36 +1,18 @@
 ---
 - hosts: all
-  user: root
-  vars: 
-    createuser: 'petclinic_user'
-    createpassword: 'petclinic_pass'
+  user: ansible_system
   tasks:
-  - name: Setup | create user
-    command: useradd -m {{ createuser }} creates=/home/{{ createuser }}
-    sudo: true
-
-  - name: Setup | set user password
-    shell: usermod -p $(echo '{{ createpassword }}' | openssl passwd -1 -stdin) {{ createuser }}
-    sudo: true
-
-  - name: Setup | authorized key upload
-    authorized_key: user={{ createuser }}
-      key="{{ lookup('file', 'mypublickey.pub') }}"
-      path='/home/{{ createuser }}/.ssh/authorized_keys'
-      manage_dir=no
-    sudo: true
-
   - name: Setup | create app directory
     ansible.builtin.file:
-      path: /home/{{ createuser }}/apps
+      path: ~/apps
       state: directory
-      owner: '{{ createuser }}'
-      group: '{{ createuser }}'
+      owner: ansible_system
+      group: ansible_system
 
   - name: Deployment | copy 
     copy:
       src: $JENKINS_HOME/workspace/spring-petclinic_assignment2/target/*.jar
-      dest: /home/{{ createuser }}/apps
+      dest: ~/apps
 
   - name: Deployment | run app
-    shell: nohup java -Dserver.port=8081 -jar *.jar
+    shell: nohup java -Dserver.port=8080 -jar *.jar
