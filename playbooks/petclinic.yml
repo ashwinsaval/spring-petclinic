@@ -10,8 +10,8 @@
 
   - name: Deployment | copy 
     copy:
-      src: $JENKINS_HOME/workspace/spring-petclinic_assignment2/target/
+      src: "{{ lookup('ansible.builtin.env', 'JENKINS_HOME') }}/workspace/spring-petclinic_assignment2/target/"
       dest: ~/apps/
 
   - name: Deployment | run app
-    shell: nohup java -Dserver.port=8080 -jar *.jar
+    shell: "cd ~apps && nohup java -Dserver.port=8080 -jar *.jar"
