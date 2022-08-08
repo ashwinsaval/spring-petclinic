@@ -13,7 +13,7 @@ pipeline {
           ansible-playbook --version
           ansible-galaxy --version
         '''
-        sh 'ansible-playbook -i inventory/petclinic.hosts playbooks/petclinic.yml'
+        sh 'ansible-playbook -i inventory/petclinic.hosts.ini playbooks/petclinic.yml'
       }
     }
   }
