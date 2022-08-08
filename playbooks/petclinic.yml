@@ -9,7 +9,7 @@
       owner: ansible_system
 
   - name: Deployment | kill running java apps 
-    shell: "pkill -9 java"
+    shell: "pkill java"
 
   - name: Deployment | copy 
     copy:
