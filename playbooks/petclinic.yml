@@ -7,7 +7,6 @@
       path: ~/apps
       state: directory
       owner: ansible_system
-      group: ansible_system
 
   - name: Deployment | copy 
     copy:
