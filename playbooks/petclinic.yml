@@ -14,4 +14,4 @@
       dest: ~/apps/
 
   - name: Deployment | run app
-    shell: "nohup java -Dserver.port=8080 -jar ~/apps/*.jar"
+    shell: "nohup java -Dserver.port=8080 -jar ~/apps/*.jar &"
